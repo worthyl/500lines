@@ -1,6 +1,6 @@
 SuperSimpleCI
 =============
-**Author;** Malini Das
+**Author:** Malini Das
 
 **Project:** SuperSimpleCI
 
@@ -15,8 +15,8 @@ Files
 * dispatcher.py -- Receives test requests and dispatches them against test runners
 * test_runner.py -- Runs the tests and returns the results 
 * helpers.py -- Holds shared code
-* update_repo.sh -- Updates the shared repo and drops a new file with the hash if there's a change
-* test_runner_script.sh -- Updates the test runner's repository to the given commit hash
+* update_repo.sh -- Updates the shared repo and drops a new file with the commit id if there's a change
+* test_runner_script.sh -- Updates the test runner's repository to the given commit id 
 * run_or_fail.sh -- Helper method used in update_repo.sh and test_runner_script.sh
 * tests/ -- Holds some demo tests to run
 
@@ -65,7 +65,7 @@ Copy the tests/ folder from this code base to test_repo and commit it::
   cp -r /this/directory/tests /path/to/test_repo/
   cd /path/to/test_repo
   git add tests/
-  git commit -m”add tests”
+  git commit -m "add tests"
 
 The repo observer will need its own clone of the code::
 
@@ -110,12 +110,12 @@ to make a new commit. Go to your master repo and make an arbitrary change::
   cd /path/to/test_repo
   touch new_file
   git add new_file
-  git commit -m"new file" new_file
+  git commit -m "new file" new_file
 
 then repo_observer.py will realize that there's a new commit and will notify
 the dispatcher. You can see the output in their respective shells, so you
 can monitor them. Once the dispatcher receives the test results, it stores them
-in a test_results/ folder in this code base, using the commit hash as the
+in a test_results/ folder in this code base, using the commit id as the
 file name.
 
 Error Handling
